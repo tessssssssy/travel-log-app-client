@@ -37,9 +37,9 @@ class CountriesList extends Component {
                 <MapContainer countries={this.state.countries}/>
             </div>
             <div className="list">
-                {/* {this.state.data.map((country) => (
+                {this.state.data.map((country) => (
                 <p>{country.name}:<img src={country.flag} style={{width: "20px"}}/></p>
-                ))} */}
+                ))}
                 <form onSubmit={this.onFormSubmit}>
                 <label>Add Country</label>
                 <input onChange={this.onInputChange} type="text"></input>
