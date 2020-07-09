@@ -12,24 +12,42 @@ class CountriesList extends Component {
     async componentDidMount() {
         const response = await fetch('https://restcountries.eu/rest/v2/all');
         const countries = await response.json();
-        this.setState({ data: countries })
+        this.setState({ data: countries });
+        this.getUserCountries()
     }
 
-    onFormSubmit = (evt) => {
-        evt.preventDefault();
-        const search = this.state.input
-        console.log(search)
-        console.log(this.state.data)
-        const newCountry = this.state.data.filter(country => country.name === search )[0]
-        console.log(newCountry)
-        this.setState(previousState => ({
-            countries: [...previousState.countries, newCountry]
-        }));
-    }
-    onInputChange = (evt) => {
-        this.setState({input: evt.target.value})
+    getUserCountries = async () => {
+        const response = await fetch('http://localhost:3000/countries', {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }});
+        const countries = await response.json();
+        console.log(countries)
+        const userCountries = []
+        for (let i = 0; i < this.state.data.length; i++){
+            this.state.countries.forEach(country => {
+                if (this.state.data[i].name === country.name) {
+                    userCountries.push(this.state.data[i])
+                }
+            })
+        }
+        this.setState({ countries: userCountries })
+        console.log(this.state.countries)
     }
 
+    // onFormSubmit = (evt) => {
+    //     evt.preventDefault();
+    //     const search = this.state.input
+    //     console.log(search)
+    //     console.log(this.state.data)
+    //     const newCountry = this.state.data.filter(country => country.name === search )[0]
+    //     console.log(newCountry)
+    //     this.setState(previousState => ({
+    //         countries: [...previousState.countries, newCountry]
+    //     }));
+    // }
     render() {
         return (
             <div class="CountriesList">
@@ -37,17 +55,11 @@ class CountriesList extends Component {
                 <MapContainer countries={this.state.countries}/>
             </div>
             <div className="list">
-                {this.state.data.map((country) => (
+                {this.state.countries.map((country) => (
                 <p>{country.name}:<img src={country.flag} style={{width: "20px"}}/></p>
                 ))}
-                <form onSubmit={this.onFormSubmit}>
-                <label>Add Country</label>
-                <input onChange={this.onInputChange} type="text"></input>
-                <input type="submit"></input>
-            </form>
-            </div>
-            
-            </div>
+            </div>            
+        </div>
         )
     }
 }

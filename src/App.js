@@ -5,7 +5,7 @@ import './App.css';
 import CountriesList from './CountriesList';
 import MapContainer from './MapContainer';
 import Navbar from './Navbar';
-import CreateTrip from './CreateTrip';
+import CreateCountry from './CreateCountry';
 import Home from './Home';
 import Login from './Login';
 import SignUp from './Signup';
@@ -16,9 +16,9 @@ class App extends React.Component {
       <>
       <Navbar/>
       <Switch>
-        <Route exact path="/" component={CountriesList} />
-        <Route exact path="/trips" component={CountriesList} />
-        <Route exact path="/trips/create" component={CreateTrip} />  
+        <Route exact path="/" component={Home} />
+        <Route exact path="/countries" component={CountriesList} />
+        <Route exact path="/countries/create" component={CreateCountry} />  
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={SignUp} />    
       </Switch>

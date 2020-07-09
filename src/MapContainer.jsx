@@ -44,10 +44,6 @@ export class MapContainer extends React.Component {
         {this.props.countries.map(country => {
           return <Marker position={{lat: country.latlng[0], lng: country.latlng[1]}}/>
         })}
-        <Marker onClick={this.onMarkerClick}
-                name={'Current location'} 
-                position={{lat: 37.778519, lng: -122.405640}} />
- 
         <InfoWindow onClose={this.onInfoWindowClose}>
             <div>
               <h1>{this.state.selectedPlace.name}</h1>

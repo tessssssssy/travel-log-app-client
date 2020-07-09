@@ -6,8 +6,8 @@ const Navbar = () => {
     const history = useHistory();
     return (
     <nav>
-        <Link to="/trips">Home</Link>
-        <Link to="/trips/create">New</Link>
+        <Link to="/countries">Home</Link>
+        <Link to="/countries/create">New</Link>
         <Link to="/login">Login</Link>
         <Link to="/signup">Sign Up</Link>
         <span

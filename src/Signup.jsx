@@ -24,7 +24,7 @@ class SignUp extends React.Component {
       if (response.status >= 400) {
         throw new Error("incorrect credentials");
       } else {
-        const response = await fetch("http://localhost:3000/login", {
+        const response = await fetch("http://localhost:3000/sign-up", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -33,7 +33,7 @@ class SignUp extends React.Component {
         })
         const { jwt } = await response.json()
         localStorage.setItem("token", jwt);
-        this.props.history.push("/secrets");
+        this.props.history.push("/countries");
       }
     } catch (err) {
       console.log(err.message)
