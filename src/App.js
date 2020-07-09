@@ -9,6 +9,7 @@ import CreateCountry from './CreateCountry';
 import Home from './Home';
 import Login from './Login';
 import SignUp from './Signup';
+import ProtectedRoute from './ProtectedRoute';
 
 class App extends React.Component {
   render() {
@@ -17,8 +18,8 @@ class App extends React.Component {
       <Navbar/>
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route exact path="/countries" component={CountriesList} />
-        <Route exact path="/countries/create" component={CreateCountry} />  
+        <ProtectedRoute exact path="/countries" component={CountriesList} />
+        <ProtectedRoute exact path="/countries/create" component={CreateCountry} />  
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={SignUp} />    
       </Switch>

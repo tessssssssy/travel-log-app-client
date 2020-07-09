@@ -24,10 +24,10 @@ class CountriesList extends Component {
               'Authorization': `Bearer ${localStorage.getItem('token')}`
             }});
         const countries = await response.json();
-        console.log(countries)
+        console.log(this.state.data)
         const userCountries = []
         for (let i = 0; i < this.state.data.length; i++){
-            this.state.countries.forEach(country => {
+            countries.forEach(country => {
                 if (this.state.data[i].name === country.name) {
                     userCountries.push(this.state.data[i])
                 }
