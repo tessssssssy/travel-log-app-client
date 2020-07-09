@@ -30,8 +30,10 @@ export class MapContainer extends React.Component {
   }
   render() {
     const style = {
-        width: '60%',
-        height: '70%'
+        width: '900px',
+        height: '500px',
+        marginLeft: '20px',
+        borderRadius: '10px'
       }
     return (
       <Map 

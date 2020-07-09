@@ -1,18 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useHistory } from "react-router-dom";
+import './Navbar.css';
 
 class Navbar extends React.Component {
     // state = { currentUser : localStorage.getItem('token') }
     render() {
         return (
-            <nav>
-                <Link to="/">Home</Link>
-                <Link to="/countries/create">New</Link>
-                <Link to="/login">Login</Link>
-                <Link to="/signup">Sign Up</Link>
+            <nav className="Navbar">
+                <Link className="nav-link" to="/countries">Home</Link>
+                <Link className="nav-link" to="/countries/create">Add Country</Link>
+                <Link className="nav-link" to="/login">Login</Link>
+                <Link className="nav-link" to="/signup">Sign Up</Link>
                 {this.props.isAuth &&
-                <span
+                <span className="nav-link"
                 onClick={() => {
                     localStorage.removeItem("token");
                     console.log(this.props.isAuth)

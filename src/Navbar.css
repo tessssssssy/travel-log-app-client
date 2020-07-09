@@ -1,0 +1,19 @@
+.Navbar {
+    height: 50px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    box-shadow: 7px 10px 19px -8px rgba(122,121,122,1);
+
+}
+
+.nav-link {
+    margin: 20px;
+    color: black;
+    text-decoration: none;
+}
+
+.nav-link:hover {
+    color: dodgerblue;
+    cursor: pointer;
+}
