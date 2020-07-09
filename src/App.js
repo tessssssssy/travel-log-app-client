@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import logo from './logo.svg';
 import './App.css';
@@ -11,11 +11,12 @@ import Login from './Login';
 import SignUp from './Signup';
 import ProtectedRoute from './ProtectedRoute';
 
-class App extends React.Component {
-  render() {
+const App = () => {
+  const [loggedIn, setLoggedIn] = useState(localStorage.getItem("token"));
+  //render() {
     return (
       <>
-      <Navbar/>
+      <Navbar isAuth={loggedIn} />
       <Switch>
         <Route exact path="/" component={Home} />
         <ProtectedRoute exact path="/countries" component={CountriesList} />
@@ -25,7 +26,7 @@ class App extends React.Component {
       </Switch>
       </>
     )
-  }
+  //}
 }
 
 export default App;
