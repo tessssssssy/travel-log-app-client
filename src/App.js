@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import CountriesList from './CountriesList';
-import MapContainer from './MapContainer';
+// import MapContainer from './MapContainer';
 import Navbar from './Navbar';
 import CreateCountry from './CreateCountry';
 import Home from './Home';
@@ -16,15 +16,14 @@ const App = () => {
   const [loggedIn, setLoggedIn] = useState(localStorage.getItem("token"));
   //render() {
     return (
-      <div className="App">
-      <Navbar isAuth={loggedIn} />
+      <div>
+      <Navbar loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
       <Switch>
         <Route exact path="/" component={Home} />
         <ProtectedRoute exact path="/countries" component={CountriesList} />
-        <ProtectedRoute exact path="/countries/create" component={CreateCountry} />
-        <Route path="/countries/:name" render={(props) => <Country {...props} /> } />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/signup" component={SignUp} />    
+        <ProtectedRoute exact path="/countries/create" component={CreateCountry} />  
+        <Route exact path="/login" render={(props) => <Login {...props} setLoggedIn={setLoggedIn}/> } />
+        <Route exact path="/sign-up" render={(props)=> <SignUp {...props} setLoggedIn={setLoggedIn}/>} />    
       </Switch>
       </div>
     )
