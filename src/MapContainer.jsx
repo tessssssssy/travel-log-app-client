@@ -25,7 +25,7 @@ export class MapContainer extends React.Component {
   };
   fetchPlaces(mapProps, map) {
     const {google} = mapProps;
-    const service = new google.maps.places.PlacesService(map);
+    new google.maps.places.PlacesService(map);
     // ...
   }
   render() {
@@ -41,8 +41,8 @@ export class MapContainer extends React.Component {
         lat: 20,
         lng: 0
       }}>
-        {this.props.countries.map(country => {
-          return <Marker position={{lat: country.latlng[0], lng: country.latlng[1]}}/>
+        {this.props.countries.map((country, index) => {
+          return <Marker key={index} position={{lat: country.latlng[0], lng: country.latlng[1]}}/>
         })}
         <InfoWindow onClose={this.onInfoWindowClose}>
             <div>

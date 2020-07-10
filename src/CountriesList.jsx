@@ -24,7 +24,6 @@ class CountriesList extends Component {
               'Authorization': `Bearer ${localStorage.getItem('token')}`
             }});
         const countries = await response.json();
-        console.log(this.state.data)
         const userCountries = []
         for (let i = 0; i < this.state.data.length; i++){
             countries.forEach(country => {
@@ -34,7 +33,6 @@ class CountriesList extends Component {
             })
         }
         this.setState({ countries: userCountries })
-        console.log(this.state.countries)
     }
 
     // onFormSubmit = (evt) => {
@@ -50,13 +48,13 @@ class CountriesList extends Component {
     // }
     render() {
         return (
-            <div class="CountriesList">
+            <div className="CountriesList">
             <div>
                 <MapContainer countries={this.state.countries}/>
             </div>
             <div className="list">
-                {this.state.countries.map((country) => (
-                <p>{country.name}:<img src={country.flag} style={{width: "20px"}}/></p>
+                {this.state.countries.map((country, index) => (
+                <p key={index}>{country.name}:<img src={country.flag} alt='map' style={{width: "20px"}}/></p>
                 ))}
             </div>            
         </div>

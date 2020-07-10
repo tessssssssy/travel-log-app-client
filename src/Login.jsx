@@ -29,6 +29,7 @@ class Login extends React.Component {
       } else {
         const { jwt } = await response.json();
         localStorage.setItem("token", jwt);
+        this.props.setLoggedIn(jwt);
         this.props.history.push("/countries");
       }
     } catch (err) {
