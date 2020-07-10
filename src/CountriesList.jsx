@@ -36,7 +36,6 @@ class CountriesList extends Component {
             })
         }
         this.setState({ countries: userCountries })
-        console.log(this.state.countries)
     }
 
     // onFormSubmit = (evt) => {
@@ -61,7 +60,7 @@ class CountriesList extends Component {
                     <h3>Countries</h3>
                     <div className="countries-list">
                     {this.state.countries.map((country) => (
-                    <Link className="list-item" to={`/countries/${country.name}`}>{country.name}</Link>
+                    <Link className="list-item" to={`/countries/${country.name}`}>{country.name}:<img src={country.flag} style={{width: "20px"}}/></Link>
                     //:<img src={country.flag} style={{width: "20px"}}/>
                     ))}
                     </div>
