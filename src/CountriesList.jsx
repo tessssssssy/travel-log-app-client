@@ -26,7 +26,6 @@ class CountriesList extends Component {
               'Authorization': `Bearer ${localStorage.getItem('token')}`
             }});
         const countries = await response.json();
-        console.log(this.state.data)
         const userCountries = []
         for (let i = 0; i < this.state.data.length; i++){
             countries.forEach(country => {
@@ -37,7 +36,16 @@ class CountriesList extends Component {
         }
         this.setState({ countries: userCountries })
     }
-
+    getCountries = async () => {
+        const response = await fetch('http://localhost:3000/countries', {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }});
+        const countries = await response.json();
+        return countries
+    }
     // onFormSubmit = (evt) => {
     //     evt.preventDefault();
     //     const search = this.state.input
@@ -49,9 +57,24 @@ class CountriesList extends Component {
     //         countries: [...previousState.countries, newCountry]
     //     }));
     // }
+    deleteCountry = async (name) => {
+        const countries = await this.getCountries();
+        console.log(countries)
+        const deletedCountry = countries.filter(country => country.name === name)[0]
+        console.log(deletedCountry)
+        await fetch(`http://localhost:3000/countries/${deletedCountry.id}`, {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+          }
+        })
+
+        this.getUserCountries()
+      }
     render() {
         return (
-            <div class="CountriesList">
+            <div className="CountriesList">
             <h1>All the places I've been</h1>
             <div className="main-container">
             <MapContainer countries={this.state.countries}/>
@@ -59,8 +82,11 @@ class CountriesList extends Component {
                 <div className="list">
                     <h3>Countries</h3>
                     <div className="countries-list">
-                    {this.state.countries.map((country) => (
-                    <Link className="list-item" to={`/countries/${country.name}`}>{country.name}:<img src={country.flag} style={{width: "20px"}}/></Link>
+                    {this.state.countries.map((country, index) => (
+                        <div className="link-container">
+                            <Link key={index} className="list-item" to={{pathName: `/countries/${country.name}`, state: this.state.data}}>{country.name}:<img src={country.flag} style={{width: "20px"}}/></Link>
+                            <button onClick={() => this.deleteCountry(country.name)}>Delete</button>
+                        </div>                   
                     //:<img src={country.flag} style={{width: "20px"}}/>
                     ))}
                     </div>
