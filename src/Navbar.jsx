@@ -14,7 +14,7 @@ class Navbar extends React.Component {
     const loggedIn = this.props.loggedIn;
     return (
       <nav className='Navbar'>
-        <Link className="nav-link" to="/">Home</Link>
+        <Link className="nav-link" to="/countries">Home</Link>
         {loggedIn ? (
           <>
             <Link className="nav-link" to="/countries/create">Add Country</Link>

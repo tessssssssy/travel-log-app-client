@@ -78,13 +78,13 @@ class CountriesList extends Component {
             <h1>All the places I've been</h1>
             <div className="main-container">
             <MapContainer countries={this.state.countries}/>
-                <div class="box"></div>
+                {/* <div class="box"></div> */}
                 <div className="list">
                     <h3>Countries</h3>
                     <div className="countries-list">
                     {this.state.countries.map((country, index) => (
                         <div className="link-container">
-                            <Link key={index} className="list-item" to={{pathName: `/countries/${country.name}`, state: this.state.data}}>{country.name}:<img src={country.flag} style={{width: "20px"}}/></Link>
+                            <Link key={index} className="list-item" to={{pathname: `/countries/${country.name}`, state: this.state.data}}>{country.name}:<img src={country.flag} style={{width: "20px"}}/></Link>
                             <button onClick={() => this.deleteCountry(country.name)}>Delete</button>
                         </div>                   
                     //:<img src={country.flag} style={{width: "20px"}}/>

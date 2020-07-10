@@ -17,17 +17,17 @@ const App = () => {
   const [loggedIn, setLoggedIn] = useState(localStorage.getItem("token"));
   //render() {
     return (
-      <>
+      <div className="App">
       <Navbar loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
       <Switch>
         <Route exact path="/" component={Home} />
         <ProtectedRoute exact path="/countries" component={CountriesList} />
         <ProtectedRoute exact path="/countries/create" component={CreateCountry} />
-        <Route exact path="/countries/:name" render={(props) => <Country {...props} /> } />
+        <Route exact path="/countries/:name" component={Country}/>
         <Route exact path="/login" render={(props) => <Login {...props} setLoggedIn={setLoggedIn}/> } />
         <Route exact path="/sign-up" render={(props)=> <SignUp {...props} setLoggedIn={setLoggedIn}/>} />    
       </Switch>
-      </>
+      </div>
     )
   //}
 }
