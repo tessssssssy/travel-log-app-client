@@ -1,5 +1,6 @@
 .App {
-  display: flex;;
+  background-color: rgb(223, 228, 233);
+  height: 120vh;
 }
 
 .App-logo {

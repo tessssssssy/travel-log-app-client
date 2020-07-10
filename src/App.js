@@ -10,12 +10,13 @@ import Home from './Home';
 import Login from './Login';
 import SignUp from './Signup';
 import ProtectedRoute from './ProtectedRoute';
+import Country from './Country';
 
 const App = () => {
   const [loggedIn, setLoggedIn] = useState(localStorage.getItem("token"));
   //render() {
     return (
-      <>
+      <div>
       <Navbar loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
       <Switch>
         <Route exact path="/" component={Home} />
@@ -24,7 +25,7 @@ const App = () => {
         <Route exact path="/login" render={(props) => <Login {...props} setLoggedIn={setLoggedIn}/> } />
         <Route exact path="/sign-up" render={(props)=> <SignUp {...props} setLoggedIn={setLoggedIn}/>} />    
       </Switch>
-      </>
+      </div>
     )
   //}
 }

@@ -3,7 +3,7 @@ import React from 'react'
 
 class Home extends React.Component {
   render() {
-    return <h1>home</h1>
+    return <h1>All the places I've been</h1>
   }
 }
 

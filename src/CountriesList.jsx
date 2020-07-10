@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import MapContainer from './MapContainer';
 import './CountriesList.css';
+import { Link } from 'react-router-dom';
+
 
 class CountriesList extends Component {
     state = { 
@@ -49,14 +51,20 @@ class CountriesList extends Component {
     render() {
         return (
             <div className="CountriesList">
-            <div>
-                <MapContainer countries={this.state.countries}/>
-            </div>
-            <div className="list">
-                {this.state.countries.map((country, index) => (
-                <p key={index}>{country.name}:<img src={country.flag} alt='map' style={{width: "20px"}}/></p>
-                ))}
-            </div>            
+            <h1>All the places I've been</h1>
+            <div className="main-container">
+            <MapContainer countries={this.state.countries}/>
+                <div class="box"></div>
+                <div className="list">
+                    <h3>Countries</h3>
+                    <div className="countries-list">
+                    {this.state.countries.map((country) => (
+                    <Link key={index} className="list-item" to={`/countries/${country.name}`}>{country.name}</Link>
+                    //:<img src={country.flag} alt='flag' style={{width: "20px"}}/>
+                    ))}
+                    </div>
+                </div>  
+            </div>          
         </div>
         )
     }

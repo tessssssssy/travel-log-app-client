@@ -1,3 +1,33 @@
 .CountriesList {
+    margin: 0 auto;
+}
+
+.main-container {
     display: flex;
+}
+
+h1 {
+    font-size: 40pt;
+    margin-left: 20px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    display: inline-block;
+    width: 860px;
+    box-shadow: 7px 10px 19px -8px rgba(122,121,122,1);
+}
+.box {
+    width: 950px;
+    height: 500px;
+}
+
+.list {
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px 20px;
+    box-shadow: 7px 10px 19px -8px rgba(122,121,122,1);
+}
+
+.list-item {
+    display: block;
 }
